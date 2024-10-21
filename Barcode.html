@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dummy Website with Embedded Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        nav {
+            background-color: #444;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        /* Section Styles */
+        #home, #product, #cases, #assets {
+            background-color: white;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        /* Chat button customization */
+        .embeddedServiceHelpButton .helpButton .uiButton {
+            background-color: #1947BA;
+            font-family: "Arial", sans-serif;
+        }
+        .embeddedServiceHelpButton .helpButton .uiButton:focus {
+            outline: 1px solid #1947BA;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Dummy Website with Embedded Chat</h1>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#product">Product</a>
+        <a href="#cases">Cases</a>
+        <a href="#assets">Assets</a>
+    </nav>
+
+    <section id="home">
+        <h2>Home</h2>
+        <p>Welcome to the Dummy Website's home page!</p>
+    </section>
+
+    <section id="product">
+        <h2>Product</h2>
+        <p>Here you can explore our latest products.</p>
+    </section>
+
+    <section id="cases">
+        <h2>Cases</h2>
+        <p>View the cases we have worked on.</p>
+    </section>
+
+    <section id="assets">
+        <h2>Assets</h2>
+        <p>Discover our assets and resources.</p>
+    </section>
+
+    <footer>
+        <p>© 2024 Dummy Website. All Rights Reserved.</p>
+    </footer>
+
+    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+    <script type='text/javascript'>
+        var initESW = function(gslbBaseURL) {
+            embedded_svc.settings.displayHelpButton = true; // Or false
+            embedded_svc.settings.language = ''; // For example, enter 'en' or 'en-US'
+
+            embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+            embedded_svc.settings.entryFeature = 'LiveAgent';
+
+            embedded_svc.init(
+                'https://ariston-bell-llc-dev-ed.develop.my.salesforce.com',
+                'https://ariston-bell-llc-dev-ed.develop.my.site.com/AxisAir',
+                gslbBaseURL,
+                '00D2w00000RsdsT',
+                'Chat_Agents',
+                {
+                    baseLiveAgentContentURL: 'https://c.la1-c2-hn4.salesforceliveagent.com/content',
+                    deploymentId: '5722w000000ZLwQ',
+                    buttonId: '5732w000000ZOyE',
+                    baseLiveAgentURL: 'https://d.la1-c2-hn4.salesforceliveagent.com/chat',
+                    eswLiveAgentDevName: 'Chat_Agents',
+                    isOfflineSupportEnabled: false
+                }
+            );
+        };
+
+        if (!window.embedded_svc) {
+            var s = document.createElement('script');
+            s.setAttribute('src', 'https://ariston-bell-llc-dev-ed.develop.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+            s.onload = function() {
+                initESW(null);
+            };
+            document.body.appendChild(s);
+        } else {
+            initESW('https://service.force.com');
+        }
+    </script>
+
+</body>
+</html>
